@@ -15,24 +15,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
+
             <LinearLayout
                 android:id="@+id/top_space"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="vertical" >
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-
+
                 <LinearLayout
                     android:id="@+id/left_space"
-                    android:layout_width="60px"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal" >
+
                 </LinearLayout>
 
                 <ScrollView
@@ -60,9 +62,17 @@
 
         <LinearLayout
             android:id="@+id/btns"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/top_space"
+                android:layout_width="50dp"
+                android:layout_height="80dp"
+                android:orientation="vertical" >
+
+            </LinearLayout>
 
             <ImageButton
                 android:id="@+id/btn1"
@@ -81,6 +91,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+            <ImageButton
+                android:id="@+id/btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+
         </LinearLayout>
     </TableRow>
 
