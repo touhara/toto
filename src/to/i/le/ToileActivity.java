@@ -15,6 +15,7 @@ public class ToileActivity extends Activity {
     private int max_vol;
     private SoundPool m_sp;
     private int sound_id;
+
     
     /** Called when the activity is first created. */
     @Override
@@ -32,6 +33,7 @@ public class ToileActivity extends Activity {
 			}
 		});
 
+        
         // 音声ファイルを読み込む
         load_sound_file();
         // 最大音量を指定(着信音)

@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fadingEdge="none"
-                    android:scrollbars="none" >
+                    android:scrollbars="none" android:overScrollMode="never">
 
                     <LinearLayout
                         android:id="@+id/linearLayout1"
@@ -55,6 +55,16 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/str" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout4"
+                            android:layout_width="match_parent"
+                            android:layout_height="450dp"
+                            android:background="#000000"
+                            android:orientation="vertical" >
+
+                        </LinearLayout>
+
                     </LinearLayout>
                 </ScrollView>
             </LinearLayout>
