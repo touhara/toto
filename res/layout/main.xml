@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal" android:stretchColumns="0">
-
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
@@ -15,100 +15,91 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="50px"
+                android:orientation="vertical" >
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/top_space"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="vertical" >
-
+                android:layout_width="360px"
+                android:layout_height="150px"
+                android:orientation="vertical" android:background="@color/green">
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-
+
                 <LinearLayout
                     android:id="@+id/left_space"
-                    android:layout_width="50dp"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal" >
-
                 </LinearLayout>
 
-                <ScrollView
-                    android:id="@+id/scrollView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fadingEdge="none"
-                    android:scrollbars="none" android:overScrollMode="never">
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFFFF"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayout4"
-                            android:layout_width="match_parent"
-                            android:layout_height="450dp"
-                            android:background="#000000"
-                            android:orientation="vertical" >
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </ScrollView>
+                <ListView
+                    android:id="@+id/paperView"
+                    android:layout_width="280px"
+                    android:layout_height="600px"
+                    android:background="@color/white"
+                    android:clickable="false"
+                    android:scrollbars="none"
+                    android:smoothScrollbar="false" >
+                </ListView>
             </LinearLayout>
         </LinearLayout>
-
+
         <LinearLayout
             android:id="@+id/btns"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/top_space"
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:orientation="vertical" >
-
-            </LinearLayout>
+            android:layout_width="120px"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
 
             <ImageButton
                 android:id="@+id/btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_marginBottom="25px"
+                android:layout_marginTop="25px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
             <ImageButton
                 android:id="@+id/btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_marginBottom="25px"
+                android:layout_marginTop="25px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
             <ImageButton
                 android:id="@+id/btn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_margin="25px"
+                android:layout_marginTop="25px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
             <ImageButton
                 android:id="@+id/btn4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_marginBottom="25px"
+                android:layout_marginTop="20px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher" />
         </LinearLayout>
+
     </TableRow>
 
 </TableLayout>
