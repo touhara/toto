@@ -7,7 +7,11 @@ import android.media.SoundPool;
 class ToiletSounds{
     private AudioManager _am;
     private SoundPool _sp;
-    private int sound_id;
+    //TODO: リファクタ
+    private int sound_id1;
+    private int sound_id2;
+    private int sound_id3;
+    private int sound_id4;
     private ToileActivity _ta;
     
     public enum type{
@@ -32,16 +36,16 @@ class ToiletSounds{
 
          switch(type){
          case JAVAA:
-             _sp.play(sound_id, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id1, vol, vol, 1, 0, 1.0F);
              break;
          case PIYO:
-             _sp.play(sound_id, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id2, vol, vol, 1, 0, 1.0F);
              break;
          case CHARAN:
-             _sp.play(sound_id, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id3, vol, vol, 1, 0, 1.0F);
              break;
          case SING:
-             _sp.play(sound_id, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id4, vol, vol, 1, 0, 1.0F);
              break;
          }
      }
@@ -51,12 +55,22 @@ class ToiletSounds{
         //最大5つの音を重ねて再生する
         _sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         //ファイル読み込み
-        sound_id = _sp.load(_ta, R.raw.bin070719184706001, 0);
+        sound_id1 = _sp.load(_ta, R.raw.bin070719184706001, 0);
+        sound_id2 = _sp.load(_ta, R.raw.bin091019064957001, 0);
+        sound_id3 = _sp.load(_ta, R.raw.bin100510081903001, 0);
+        sound_id4 = _sp.load(_ta, R.raw.bin100528011059001, 0);
      }
      
      public void unload_sound_file(){
-         _sp.stop(sound_id);
-         _sp.unload(sound_id);
+    	 //TODO: リファクタ
+         _sp.stop(sound_id1);
+         _sp.unload(sound_id1);
+         _sp.stop(sound_id2);
+         _sp.unload(sound_id2);
+         _sp.stop(sound_id3);
+         _sp.unload(sound_id3);
+         _sp.stop(sound_id4);
+         _sp.unload(sound_id4);
          _sp.release();
      }
  }
