@@ -78,7 +78,7 @@ public class ToileActivity extends Activity {
     private void add_paper(){
     	//TODO: データは適当 トイレのうんちくを表示したい。    	
     	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "トイレットペーパーには裏と表があるんだってよ。");
+    	paper_list.add(0, "\n\n\n\n");
     	paper_list.add(0, "\n\n\n\n");
     	paper_list.add(0, "\n\n\n\n");
     	paper_list.add(0, "\n\n\n\n");
