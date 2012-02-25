@@ -10,6 +10,7 @@
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+<<<<<<< HEAD
 
         <LinearLayout
             android:id="@+id/left_space"
@@ -17,11 +18,27 @@
             android:layout_height="match_parent"
             android:orientation="horizontal" android:background="@drawable/a">
         </LinearLayout>
+=======
+>>>>>>> tototo
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout6"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/a" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="vertical" >
 
             <LinearLayout
@@ -33,9 +50,26 @@
 
             </LinearLayout>
 
+=======
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/c" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/d" />
+
+>>>>>>> tototo
             <LinearLayout
                 android:id="@+id/top_space"
                 android:layout_width="wrap_content"
+<<<<<<< HEAD
                 android:layout_height="wrap_content"
                 android:background="@drawable/d"
                 android:orientation="vertical">
@@ -59,17 +93,95 @@
             android:layout_height="wrap_content" android:background="@drawable/b">
         </LinearLayout>
 
+=======
+                android:layout_height="wrap_content" android:background="@drawable/c">
+
+                <ListView
+                    android:id="@+id/ListView01"
+                    android:layout_width="280px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:dividerHeight="2px"
+                    android:fadingEdge="none"
+                    android:fastScrollEnabled="false"
+                    android:scrollbars="none"
+                    android:visibility="gone" >
+
+                </ListView>
+
+                <ScrollView
+                    android:id="@+id/scrollView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fadingEdge="none"
+                    android:scrollbars="none" android:overScrollMode="never">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="280px"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout5"
+                            android:layout_width="match_parent"
+                            android:layout_height="620px"
+                            android:background="#FFFFFF"
+                            android:orientation="vertical"
+							>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout4"
+                            android:layout_width="match_parent"
+                            android:layout_height="600px" >
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        </LinearLayout>
+
+>>>>>>> tototo
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/b" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/btns"
             android:layout_width="120px"
+<<<<<<< HEAD
             android:layout_height="fill_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical" android:background="@color/green">
+=======
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <ImageButton
-                android:id="@+id/btn1"
+            <ImageView
+                android:id="@+id/imageView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/e_on" />
+>>>>>>> tototo
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:adjustViewBounds="true" android:background="@xml/custom_button_1" android:layout_weight="1"/>
 
             <ImageButton
@@ -97,6 +209,51 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/i" android:layout_weight="1"/>
 
+=======
+                android:src="@drawable/f_on" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/g_on" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/h_on" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i" />
+
+            <ImageButton
+                android:id="@+id/btn1"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+            <ImageButton
+                android:id="@+id/btn2"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+            <ImageButton
+                android:id="@+id/btn3"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+            <ImageButton
+                android:id="@+id/btn4"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+>>>>>>> tototo
         </LinearLayout>
 
     </TableRow>
