@@ -30,10 +30,6 @@ public class ToileActivity extends Activity {
 	private List<String> paper_list;
 	private ArrayAdapter<String> view_adapter;
 
-	private AudioManager m_am;
-    private int max_vol;
-    private SoundPool m_sp;
-    private int sound_id;
 
     ScrollView sc;
 	List<String> array = new ArrayList<String>();
