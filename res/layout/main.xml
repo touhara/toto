@@ -49,7 +49,7 @@
                 android:background="@color/white"
                 android:clickable="false"
                 android:scrollbars="none"
-                android:smoothScrollbar="false">
+                android:smoothScrollbar="false" android:stackFromBottom="true">
             </ListView>
         </LinearLayout>
 

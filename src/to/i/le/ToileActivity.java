@@ -19,7 +19,7 @@ public class ToileActivity extends Activity {
 	private ListView paper_view;
 	private List<String> paper_list;
 	private ArrayAdapter<String> view_adapter;
-	List<String> array = new ArrayList<String>();
+	List<String> untiku_array = new ArrayList<String>();
     String[] str;
 	
     /** Called when the activity is first created. */
@@ -49,7 +49,6 @@ public class ToileActivity extends Activity {
         // トイレットペーパーを生成する
         paper_view = (ListView)findViewById(R.id.paperView);
         paper_list = new ArrayList<String>();
-        add_paper();
         
         view_adapter = new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list);
         paper_view.setAdapter(view_adapter);
@@ -58,14 +57,12 @@ public class ToileActivity extends Activity {
         //NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
         
-        str = getResources().getStringArray(R.array.str);
+        str = getResources().getStringArray(R.array.untikustr);
 
         for(int i=0; i<str.length; i++) {
-        	array.add(str[i]);
-        }
-   	
-        
-      
+        	untiku_array.add(str[i]);
+         }
+        add_paper();
     }
     
     @Override
@@ -88,28 +85,15 @@ public class ToileActivity extends Activity {
    
    
     private void add_paper(){
-
-    	
     	//TODO: データは適当 トイレのうんちくを表示したい。
-/*    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
-    	*/
-    	for(int i=0; i<array.size(); i++){
-    		if(i%10 == 0){
-    			paper_list.add(0, array.get(i));
-    			Collections.shuffle(array);
-    		}else{
-    			paper_list.add(0, "\n\n\n\n\n");
-    		}
+    	//TODO: うんちくをどこかからか取得したい。
+    	if (untiku_array.size() > 0){ 
+    		Collections.shuffle(untiku_array);
+    		paper_list.add(0, untiku_array.get(0));
     	}
-    	
+    	for(int i=0; i<10; i++){
+    		paper_list.add(0, "\n\n\n\n\n");
+    	}
     }
     
     //TODO: 内部クラスでなくて外に分けた方が良い？ 無名クラス使う方が良いのかよくわかってない
