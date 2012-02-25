@@ -11,31 +11,54 @@
         android:layout_height="wrap_content" >
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout6"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/a" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <LinearLayout
-                android:id="@+id/top_space"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="vertical" >
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/c" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/d" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <LinearLayout
-                    android:id="@+id/left_space"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal" >
+                android:layout_height="wrap_content" android:background="@drawable/c">
+
+                <ListView
+                    android:id="@+id/ListView01"
+                    android:layout_width="280px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:dividerHeight="2px"
+                    android:fadingEdge="none"
+                    android:fastScrollEnabled="false"
+                    android:scrollbars="none"
+                    android:visibility="gone" >
 
-                </LinearLayout>
+                </ListView>
 
                 <ScrollView
                     android:id="@+id/scrollView1"
@@ -43,25 +66,27 @@
                     android:layout_height="wrap_content"
                     android:fadingEdge="none"
                     android:scrollbars="none" android:overScrollMode="never">
-
+
                     <LinearLayout
                         android:id="@+id/linearLayout1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFFFF"
+                        android:layout_width="280px"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout5"
+                            android:layout_width="match_parent"
+                            android:layout_height="620px"
+                            android:background="#FFFFFF"
+                            android:orientation="vertical"
+							>
 
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str" />
-
+                        </LinearLayout>
+
                         <LinearLayout
                             android:id="@+id/linearLayout4"
                             android:layout_width="match_parent"
-                            android:layout_height="450dp"
-                            android:background="#000000"
-                            android:orientation="vertical" >
+                            android:layout_height="600px" >
 
                         </LinearLayout>
 
@@ -71,44 +96,79 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btns"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/top_space"
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:orientation="vertical" >
+            android:id="@+id/linearLayout7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/b" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btns"
+            android:layout_width="120px"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/e_on" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/f_on" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/g_on" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/h_on" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i" />
 
             <ImageButton
                 android:id="@+id/btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
             <ImageButton
                 android:id="@+id/btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
             <ImageButton
                 android:id="@+id/btn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
 
             <ImageButton
                 android:id="@+id/btn4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100px"
+                android:layout_height="100px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
-
         </LinearLayout>
+
     </TableRow>
 
 </TableLayout>

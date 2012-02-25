@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Toilet</string>
-    <string name="str">
-        ---------------------------------
-        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-        ---------------------------------
-        \n\n\n\n\n\n
-		トイレットペーパーには\n
-		裏表があるらしいよ
-       	\n\n\n\n\n\n
-        ---------------------------------
-        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-        ---------------------------------
-        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-        ---------------------------------
-        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-        ---------------------------------
-        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-        ---------------------------------
-        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-        ---------------------------------
-        </string>
+    <string name="divider">-------</string>
 
 </resources>
