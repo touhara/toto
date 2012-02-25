@@ -1,33 +1,27 @@
 package to.i.le;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Collections;
 import java.util.List;
 import android.app.Activity;
-=======
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-
-
-
-import android.app.Activity;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
->>>>>>> tototo
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-<<<<<<< HEAD
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.widget.ScrollView;
+import android.widget.SimpleAdapter;
+
 
 public class ToileActivity extends Activity {
     private ButtonClickListener click_listener;
@@ -35,24 +29,6 @@ public class ToileActivity extends Activity {
 	private ListView paper_view;
 	private List<String> paper_list;
 	private ArrayAdapter<String> view_adapter;
-	List<String> array = new ArrayList<String>();
-    String[] str;
-	
-=======
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.widget.AbsListView;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
-import android.widget.AbsListView.OnScrollListener;
-
-
-public class ToileActivity extends Activity {
-
-
 
 	private AudioManager m_am;
     private int max_vol;
@@ -60,17 +36,16 @@ public class ToileActivity extends Activity {
     private int sound_id;
 
     ScrollView sc;
+	List<String> array = new ArrayList<String>();
+    String[] str;
     
->>>>>>> tototo
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
-<<<<<<< HEAD
                
-=======
 
         
     	ListView listView = getListView();
@@ -90,7 +65,6 @@ public class ToileActivity extends Activity {
         
 
         
->>>>>>> tototo
         // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
@@ -110,7 +84,7 @@ public class ToileActivity extends Activity {
         btn4.setOnClickListener(click_listener);
         
         // トイレットペーパーを生成する
-        paper_view = (ListView)findViewById(R.id.paperView);
+        paper_view = (ListView)findViewById(R.id.ListView01);
         paper_list = new ArrayList<String>();
         add_paper();
         

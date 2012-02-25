@@ -2,24 +2,13 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TableLayout1"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:stretchColumns="0" >
-
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" android:stretchColumns="0">
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-<<<<<<< HEAD
-
-        <LinearLayout
-            android:id="@+id/left_space"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" android:background="@drawable/a">
-        </LinearLayout>
-=======
->>>>>>> tototo
 
         <LinearLayout
             android:id="@+id/linearLayout6"
@@ -38,19 +27,6 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:id="@+id/linearLayout1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/c"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
-=======
             android:orientation="vertical" >
 
             <ImageView
@@ -65,35 +41,9 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/d" />
 
->>>>>>> tototo
             <LinearLayout
-                android:id="@+id/top_space"
+                android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
-<<<<<<< HEAD
-                android:layout_height="wrap_content"
-                android:background="@drawable/d"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
-            <ListView
-                android:id="@+id/paperView"
-                android:layout_width="280px"
-                android:layout_height="600px"
-                android:background="@color/white"
-                android:clickable="false"
-                android:scrollbars="none"
-                android:smoothScrollbar="false">
-            </ListView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:background="@drawable/b">
-        </LinearLayout>
-
-=======
                 android:layout_height="wrap_content" android:background="@drawable/c">
 
                 <ListView
@@ -145,7 +95,6 @@
             </LinearLayout>
         </LinearLayout>
 
->>>>>>> tototo
         <LinearLayout
             android:id="@+id/linearLayout7"
             android:layout_width="wrap_content"
@@ -162,11 +111,6 @@
         <LinearLayout
             android:id="@+id/btns"
             android:layout_width="120px"
-<<<<<<< HEAD
-            android:layout_height="fill_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" android:background="@color/green">
-=======
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
@@ -175,41 +119,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/e_on" />
->>>>>>> tototo
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-                android:adjustViewBounds="true" android:background="@xml/custom_button_1" android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true" android:background="@xml/custom_button_2" android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/btn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true" android:background="@xml/custom_button_3" android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/btn4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true" android:background="@xml/custom_button_4" android:layout_weight="1"/>
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/i" android:layout_weight="1"/>
-
-=======
                 android:src="@drawable/f_on" />
 
             <ImageView
@@ -253,7 +167,6 @@
                 android:layout_width="100px"
                 android:layout_height="100px"
                 android:src="@android:drawable/ic_lock_silent_mode_off" />
->>>>>>> tototo
         </LinearLayout>
 
     </TableRow>
