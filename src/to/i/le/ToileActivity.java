@@ -1,8 +1,8 @@
 package to.i.le;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,13 +19,15 @@ public class ToileActivity extends Activity {
 	private ListView paper_view;
 	private List<String> paper_list;
 	private ArrayAdapter<String> view_adapter;
-    
+	List<String> array = new ArrayList<String>();
+    String[] str;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-                
+               
         // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
@@ -55,6 +57,15 @@ public class ToileActivity extends Activity {
         
         //NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
+        
+        str = getResources().getStringArray(R.array.str);
+
+        for(int i=0; i<str.length; i++) {
+        	array.add(str[i]);
+        }
+   	
+        
+      
     }
     
     @Override
@@ -74,19 +85,31 @@ public class ToileActivity extends Activity {
         toilet_sounds.unload_sound_file();
         super.onDestroy();
     }
-    
+   
+   
     private void add_paper(){
-    	//TODO: データは適当 トイレのうんちくを表示したい。    	
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
-    	paper_list.add(0, "\n\n\n\n");
+
+    	
+    	//TODO: データは適当 トイレのうんちくを表示したい。
+/*    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	paper_list.add(0, "\n\n\n\n\n\n\n\n");
+    	*/
+    	for(int i=0; i<array.size(); i++){
+    		if(i%10 == 0){
+    			paper_list.add(0, array.get(i));
+    			Collections.shuffle(array);
+    		}else{
+    			paper_list.add(0, "\n\n\n\n\n");
+    		}
+    	}
+    	
     }
     
     //TODO: 内部クラスでなくて外に分けた方が良い？ 無名クラス使う方が良いのかよくわかってない

@@ -55,10 +55,10 @@ class ToiletSounds{
         //最大5つの音を重ねて再生する
         _sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         //ファイル読み込み
-        sound_id1 = _sp.load(_ta, R.raw.bin070719184706001, 0);
+        sound_id1 = _sp.load(_ta, R.raw.river, 0);
         sound_id2 = _sp.load(_ta, R.raw.bin091019064957001, 0);
-        sound_id3 = _sp.load(_ta, R.raw.bin100510081903001, 0);
-        sound_id4 = _sp.load(_ta, R.raw.bin100528011059001, 0);
+        sound_id3 = _sp.load(_ta, R.raw.bin070719184706001, 0);
+        sound_id4 = _sp.load(_ta, R.raw.zatou, 0);
      }
      
      public void unload_sound_file(){
