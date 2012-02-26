@@ -94,5 +94,6 @@
 		<item>象の妊娠期間は22ヶ月</item>
         
      </string-array>
+    <string name="divider">-------</string>
 
 </resources>
