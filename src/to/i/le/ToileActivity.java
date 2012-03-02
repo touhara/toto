@@ -3,7 +3,9 @@ package to.i.le;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +14,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ToileActivity extends Activity {
     private ButtonClickListener click_listener;
@@ -26,8 +29,17 @@ public class ToileActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-               
+ 
+        //NOTE: 男女の判断情報を受け取る。
+        	Intent intent = getIntent();
+        	String sex = intent.getStringExtra("sex");
+        	if (sex.equals("men")) {
+        		setContentView(R.layout.men);
+        	} else {
+        		setContentView(R.layout.women);
+        	}
+        
+        
         // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
@@ -59,7 +71,7 @@ public class ToileActivity extends Activity {
         
         str = getResources().getStringArray(R.array.untikustr);
 
-        for(int i=0; i<str.length; i++) {
+        for (int i=0; i<str.length; i++) {
         	untiku_array.add(str[i]);
          }
         add_paper();
@@ -99,7 +111,7 @@ public class ToileActivity extends Activity {
     //TODO: 内部クラスでなくて外に分けた方が良い？ 無名クラス使う方が良いのかよくわかってない
     // ボタン押したときの処理を記述
     class ButtonClickListener implements OnClickListener{
-        @Override
+
         public void onClick(View v){
             switch(v.getId()){
             case R.id.btn1:
@@ -120,7 +132,7 @@ public class ToileActivity extends Activity {
     
     class ListListener implements OnScrollListener{
     	
-    	@Override
+
     	public void onScroll(AbsListView view, int firstVisibleItem,
     			int visibleItemCount, int totalItemCount) {
 
@@ -135,7 +147,7 @@ public class ToileActivity extends Activity {
     		}
     	}
     	
-    	@Override
+
     	public void onScrollStateChanged(AbsListView view, int scrollState) {
     	}
     }
