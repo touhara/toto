@@ -14,12 +14,12 @@ public class Entrance extends Activity {
 
 			Intent sex = new Intent(getApplicationContext(),ToileActivity.class);
 			switch (arg0.getId()) {
-				case R.id.men:
-					sex.putExtra("sex","men");
-					break;
-				case R.id.women:
-					sex.putExtra("sex","women");
-					break;
+			case R.id.men:
+				sex.putExtra("sex","men");
+				break;
+			case R.id.women:
+				sex.putExtra("sex","women");
+				break;
 			}
 			startActivity(sex);
 		}
@@ -37,6 +37,7 @@ public class Entrance extends Activity {
         
         btn_men.setOnClickListener(new touch());
         btn_women.setOnClickListener(new touch());
+        
                
     }
 		
