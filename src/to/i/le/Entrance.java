@@ -38,7 +38,6 @@ public class Entrance extends Activity {
         btn_men.setOnClickListener(new touch());
         btn_women.setOnClickListener(new touch());
         
-               
     }
 		
 }

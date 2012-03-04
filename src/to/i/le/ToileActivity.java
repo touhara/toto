@@ -1,17 +1,8 @@
 package to.i.le;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,7 +14,6 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ToileActivity extends Activity {
    private ButtonClickListener click_listener;
@@ -31,7 +21,7 @@ public class ToileActivity extends Activity {
    private ListView paper_view;
    private List<String> paper_list;
    private ArrayAdapter<String> view_adapter;
-   List<String> untiku_array = new ArrayList<String>();
+   ArrayList<String> untiku_array = new ArrayList<String>();
    String[] str;
 	
     /** Called when the activity is first created. */
@@ -48,6 +38,9 @@ public class ToileActivity extends Activity {
         	setContentView(R.layout.women);
          }
 
+        //NOTE: json取得
+    	 new UntikuTask(untiku_array).execute();
+    	 
         // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
@@ -78,40 +71,6 @@ public class ToileActivity extends Activity {
         paper_view.setScrollingCacheEnabled(false);
         
 
-        //NOTE: json取得
-    	 HttpClient httpClient = new DefaultHttpClient();
-    	 StringBuilder uri = new StringBuilder("http://untikun.heroku.com/untiku.json");
-    	 HttpGet request = new HttpGet(uri.toString());
-    	 HttpResponse httpResponse = null;
-    	 
-    	 try {
-    	     httpResponse = httpClient.execute(request);
-    	 } catch (Exception e) {
-     		 //TODO: 例外処理の用途がよくわかってません。Toastで「えらー」的なものを書けば良いのでしょうか。
-    		 return;
-     	 }
-    	 
-    	 int status = httpResponse.getStatusLine().getStatusCode();
-    	 
-    	 if (HttpStatus.SC_OK == status) {
-    	    try {
-    	        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    	        httpResponse.getEntity().writeTo(outputStream);
-    	        
-    	        String data = outputStream.toString();
-    	        JSONObject rootObject = new JSONObject(data);
-    			 JSONArray jsonArray = rootObject.getJSONArray("untiku");
-
-    			 for (int i=0; i<jsonArray.length(); i++) {
-    				 untiku_array.add(jsonArray.getString(i));
-    			 }
-    	    } catch (Exception e) {
-    	    	
-    	    }
-    	 } else {
-    		
-    		return;
-    	 }	
         
         
         add_paper();
@@ -130,25 +89,23 @@ public class ToileActivity extends Activity {
     }
     
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         toilet_sounds.unload_sound_file();
         super.onDestroy();
     }
    
    
-    private void add_paper(){
+    private void add_paper() {
     	//TODO: 書き直したい。けど動いているから後回し。
     	if (untiku_array.size() > 0){ 
     		Collections.shuffle(untiku_array);
     		paper_list.add(0, untiku_array.get(0));
     	}
-    	for(int i=0; i<10; i++){
+    	for (int i=0; i<10; i++) {
     		paper_list.add(0, "\n\n\n\n\n");
     	}
     }
     
-    //TODO: 内部クラスでなくて外に分けた方が良い？ 無名クラス使う方が良いのかよくわかってない
-    //ぼくもよくわかってません。でも外より中、中より無名が好きです。（ここで返信していいのかな）
     // ボタン押したときの処理を記述
     class ButtonClickListener implements OnClickListener{
 
