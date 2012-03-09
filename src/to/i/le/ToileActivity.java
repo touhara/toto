@@ -6,13 +6,17 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class ToileActivity extends Activity {
@@ -23,25 +27,30 @@ public class ToileActivity extends Activity {
    private ArrayAdapter<String> view_adapter;
    ArrayList<String> untiku_array = new ArrayList<String>();
    String[] str;
-	
+   String FILE_NAME = Start.FILE_NAME;
+   SharedPreferences sp;
+   LinearLayout cover;
+   LinearLayout center;
+   LinearLayout left;
+   LinearLayout right;    
+   
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- 
-        //NOTE: 男女の判断。
-        Intent intent = getIntent();
-        String sex = intent.getStringExtra("sex");
-        if (sex.equals("men")) {
-        	setContentView(R.layout.men);
-        } else {
-        	setContentView(R.layout.women);
-         }
+        setContentView(R.layout.main);
 
-        //NOTE: json取得
-    	 new UntikuTask(untiku_array).execute();
-    	 
-        // 音声ファイルを読み込む
+        sp = getSharedPreferences(FILE_NAME,MODE_PRIVATE);
+        cover = (LinearLayout)findViewById(R.id.cover);
+        center = (LinearLayout)findViewById(R.id.center);
+        left = (LinearLayout)findViewById(R.id.left);
+        right = (LinearLayout)findViewById(R.id.right);		
+        set();
+        
+        // json取得
+    	 new UntikuTask(ToileActivity.this).execute();
+    	         
+    	 // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
         
@@ -70,10 +79,8 @@ public class ToileActivity extends Activity {
         //NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
         
-
-        
-        
         add_paper();
+       
     }
     
     @Override
@@ -146,5 +153,75 @@ public class ToileActivity extends Activity {
 
     	public void onScrollStateChanged(AbsListView view, int scrollState) {
     	}
+    }
+    
+    void set() {
+        // カバーの初期設定
+        switch(sp.getInt("COVER",0)) {
+        case 0:
+        	cover.setBackgroundResource(R.drawable.d);
+        	break;
+        case 1:
+			cover.setBackgroundResource(R.drawable.test_d1);
+			break;
+        case 2:
+			cover.setBackgroundResource(R.drawable.test_d2);			
+			break;
+        case 3:
+			cover.setBackgroundResource(R.drawable.test_d3);			
+			break;
+        }
+	
+        // 背景の初期設定
+        switch(sp.getInt("BACKGROUND",0)) {
+        case 0:
+        	center.setBackgroundResource(R.drawable.c);
+			left.setBackgroundResource(R.drawable.a);
+			right.setBackgroundResource(R.drawable.b);
+			break;
+        case 1:
+			center.setBackgroundResource(R.drawable.test_c1);
+			left.setBackgroundResource(R.drawable.test_a1);
+			right.setBackgroundResource(R.drawable.test_b1);
+			break;
+        case 2:
+			center.setBackgroundResource(R.drawable.test_c2);
+			left.setBackgroundResource(R.drawable.test_a2);
+			right.setBackgroundResource(R.drawable.test_b2);			
+			break;
+        case 3:
+			center.setBackgroundResource(R.drawable.test_c3);
+			left.setBackgroundResource(R.drawable.test_a3);
+			right.setBackgroundResource(R.drawable.test_b3);			
+			break;
+        }
+    }
+    
+	protected void onActivityResult(int reqcode, int rescode, Intent data) {
+        set();
+	}
+    
+    // メニュー
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(Menu.NONE, 0, Menu.NONE, "使い方");
+        menu.add(Menu.NONE, 1, Menu.NONE, "模様替え");
+        return super.onCreateOptionsMenu(menu);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case 0:
+        	Intent Info = new Intent(getApplicationContext(),Info.class);
+        	Info.putExtra("FROM", "From_ToileActivity");
+        	startActivity(Info);
+        	break;
+        case 1:
+        	Intent Rede = new Intent(getApplicationContext(),Redecorate.class);
+        	startActivityForResult(Rede,0);
+        	break;
+        }
+        return true;
     }
 }
