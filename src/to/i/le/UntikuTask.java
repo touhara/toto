@@ -1,6 +1,7 @@
 package to.i.le;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -15,10 +16,10 @@ import android.widget.Toast;
 
 public class UntikuTask extends AsyncTask<String, Integer, String> {
 
-	private ToileActivity _ta;
+	ArrayList<String> _array = new ArrayList<String>();   
 
-	public UntikuTask(ToileActivity ta) {
-        _ta = ta;
+	public UntikuTask(ArrayList<String> untiku_array) {
+        _array = untiku_array;
 	}
 	
 	@Override
@@ -48,7 +49,7 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 		       JSONArray jsonArray = rootObject.getJSONArray("untiku");
 
 		       for (int i=0; i<jsonArray.length(); i++) {
-		    	   _ta.untiku_array.add(jsonArray.getString(i));
+		    	   _array.add(jsonArray.getString(i));
 		       }
     	    } catch (Exception e) {
     	    	
@@ -58,8 +59,7 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 	}
 	
 	@Override
-	protected void onPostExecute(String result) {			
-		Toast.makeText(_ta, "うんちくデータを取得しました", Toast.LENGTH_SHORT).show();
+	protected void onPostExecute(String result) {
 	}
 
 }

@@ -7,11 +7,13 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
@@ -25,14 +27,16 @@ public class ToileActivity extends Activity {
    private ListView paper_view;
    private List<String> paper_list;
    private ArrayAdapter<String> view_adapter;
-   ArrayList<String> untiku_array = new ArrayList<String>();
+   static ArrayList<String> untiku_array = new ArrayList<String>();
    String[] str;
    String FILE_NAME = Start.FILE_NAME;
    SharedPreferences sp;
    LinearLayout cover;
    LinearLayout center;
    LinearLayout left;
-   LinearLayout right;    
+   LinearLayout right;
+   int tic;
+   View hiki_view;
    
     /** Called when the activity is first created. */
     @Override
@@ -46,10 +50,7 @@ public class ToileActivity extends Activity {
         left = (LinearLayout)findViewById(R.id.left);
         right = (LinearLayout)findViewById(R.id.right);		
         set();
-        
-        // json取得
-    	 new UntikuTask(ToileActivity.this).execute();
-    	         
+              
     	 // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
@@ -72,15 +73,28 @@ public class ToileActivity extends Activity {
         paper_view = (ListView)findViewById(R.id.paperView);
         paper_list = new ArrayList<String>();
         
-        view_adapter = new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list);
-        paper_view.setAdapter(view_adapter);
+        paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list) {            
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                hiki_view = super.getView(position, convertView, parent);
+              if (position < tic - 1) {
+                  hiki_view.setBackgroundColor(Color.WHITE);
+                }
+                else {
+                    hiki_view.setBackgroundDrawable(center.getBackground());
+                }
+                return hiki_view;
+            }   
+        });
+
         paper_view.setOnScrollListener(new ListListener());
         
         //NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
         
         add_paper();
-       
+        
+        paper_view.setSelection(paper_list.size());
     }
     
     @Override
@@ -103,13 +117,12 @@ public class ToileActivity extends Activity {
    
    
     private void add_paper() {
-    	//TODO: 書き直したい。けど動いているから後回し。
-    	if (untiku_array.size() > 0){ 
+    	if (!paper_list.isEmpty()){ 
     		Collections.shuffle(untiku_array);
     		paper_list.add(0, untiku_array.get(0));
     	}
-    	for (int i=0; i<10; i++) {
-    		paper_list.add(0, "\n\n\n\n\n");
+    	for (int i=0; i<3; i++) {
+    		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     	}
     }
     
@@ -139,6 +152,7 @@ public class ToileActivity extends Activity {
     	public void onScroll(AbsListView view, int firstVisibleItem,
     			int visibleItemCount, int totalItemCount) {
 
+    	    tic = totalItemCount;
     		if (paper_list.size() >= 1000){
         		//TODO: あたりなどのオチをランダムにしたい
     			paper_list.add(0, "あたり");
@@ -146,7 +160,7 @@ public class ToileActivity extends Activity {
         		//TODO: 円環リストビューにしたい
     			add_paper();
     			paper_view.invalidateViews();
-    			paper_view.setSelectionFromTop(11, 0);
+    			paper_view.setSelectionFromTop(4, 0);
     		}
     	}
     	
@@ -199,6 +213,7 @@ public class ToileActivity extends Activity {
     
 	protected void onActivityResult(int reqcode, int rescode, Intent data) {
         set();
+        hiki_view.setBackgroundDrawable(center.getBackground());
 	}
     
     // メニュー

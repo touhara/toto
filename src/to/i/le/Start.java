@@ -24,6 +24,9 @@ public class Start extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
 
+       // json取得
+    	new UntikuTask(ToileActivity.untiku_array).execute();
+    	
     	sp = getSharedPreferences(FILE_NAME,MODE_PRIVATE);
     	editor = sp.edit();
     	
