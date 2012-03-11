@@ -31,9 +31,7 @@ public class ToileActivity extends Activity {
    String FILE_NAME = Start.FILE_NAME;
    SharedPreferences sp;
    LinearLayout cover;
-   LinearLayout center;
-   LinearLayout left;
-   LinearLayout right;
+   LinearLayout main;
    int tic;
    View hiki_view;
    
@@ -45,9 +43,7 @@ public class ToileActivity extends Activity {
 
         sp = getSharedPreferences(FILE_NAME,MODE_PRIVATE);
         cover = (LinearLayout)findViewById(R.id.cover);
-        center = (LinearLayout)findViewById(R.id.center);
-        left = (LinearLayout)findViewById(R.id.left);
-        right = (LinearLayout)findViewById(R.id.right);		
+        main = (LinearLayout)findViewById(R.id.main);
         set();
               
     	 // 音声ファイルを読み込む
@@ -170,41 +166,33 @@ public class ToileActivity extends Activity {
         // カバーの初期設定
         switch(sp.getInt("COVER",0)) {
         case 0:
-        	cover.setBackgroundResource(R.drawable.d);
+        	cover.setBackgroundResource(R.drawable.cv00);
         	break;
         case 1:
-			cover.setBackgroundResource(R.drawable.test_d1);
+			cover.setBackgroundResource(R.drawable.cv01);
 			break;
         case 2:
-			cover.setBackgroundResource(R.drawable.test_d2);			
+			cover.setBackgroundResource(R.drawable.cv02);			
 			break;
         case 3:
-			cover.setBackgroundResource(R.drawable.test_d3);			
+			cover.setBackgroundResource(R.drawable.cv03);			
 			break;
         }
 	
         // 背景の初期設定
         switch(sp.getInt("BACKGROUND",0)) {
         case 0:
-        	center.setBackgroundResource(R.drawable.c);
-			left.setBackgroundResource(R.drawable.a);
-			right.setBackgroundResource(R.drawable.b);
-			break;
+          main.setBackgroundResource(R.drawable.bg00);
+          break;
         case 1:
-			center.setBackgroundResource(R.drawable.test_c1);
-			left.setBackgroundResource(R.drawable.test_a1);
-			right.setBackgroundResource(R.drawable.test_b1);
-			break;
+          main.setBackgroundResource(R.drawable.bg01);
+          break;
         case 2:
-			center.setBackgroundResource(R.drawable.test_c2);
-			left.setBackgroundResource(R.drawable.test_a2);
-			right.setBackgroundResource(R.drawable.test_b2);			
-			break;
+          main.setBackgroundResource(R.drawable.bg02);
+          break;
         case 3:
-			center.setBackgroundResource(R.drawable.test_c3);
-			left.setBackgroundResource(R.drawable.test_a3);
-			right.setBackgroundResource(R.drawable.test_b3);			
-			break;
+          main.setBackgroundResource(R.drawable.bg03);
+          break;
         }
     }
     
