@@ -26,7 +26,6 @@ public class ToileActivity extends Activity {
    private ToiletSounds toilet_sounds;
    private ListView paper_view;
    private List<String> paper_list;
-   private ArrayAdapter<String> view_adapter;
    static ArrayList<String> untiku_array = new ArrayList<String>();
    String[] str;
    String FILE_NAME = Start.FILE_NAME;
@@ -79,9 +78,8 @@ public class ToileActivity extends Activity {
                 hiki_view = super.getView(position, convertView, parent);
               if (position < tic - 1) {
                   hiki_view.setBackgroundColor(Color.WHITE);
-                }
-                else {
-                    hiki_view.setBackgroundDrawable(center.getBackground());
+              } else {
+                  hiki_view.setBackgroundColor(Color.TRANSPARENT);
                 }
                 return hiki_view;
             }   
@@ -121,7 +119,7 @@ public class ToileActivity extends Activity {
     		Collections.shuffle(untiku_array);
     		paper_list.add(0, untiku_array.get(0));
     	}
-    	for (int i=0; i<3; i++) {
+    	for (int i=0; i<4; i++) {
     		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     	}
     }
@@ -160,10 +158,9 @@ public class ToileActivity extends Activity {
         		//TODO: 円環リストビューにしたい
     			add_paper();
     			paper_view.invalidateViews();
-    			paper_view.setSelectionFromTop(4, 0);
+    			paper_view.setSelectionFromTop(5, 0);
     		}
     	}
-    	
 
     	public void onScrollStateChanged(AbsListView view, int scrollState) {
     	}
@@ -213,7 +210,6 @@ public class ToileActivity extends Activity {
     
 	protected void onActivityResult(int reqcode, int rescode, Intent data) {
         set();
-        hiki_view.setBackgroundDrawable(center.getBackground());
 	}
     
     // メニュー
