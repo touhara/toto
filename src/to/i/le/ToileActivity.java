@@ -67,7 +67,7 @@ public class ToileActivity extends Activity {
 
         // トイレットペーパーを生成する
         paper_view = (ListView)findViewById(R.id.paperView);
-        paper_list = new ArrayList<String>();;
+        paper_list = new ArrayList<String>();
         
         paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list) {            
             @Override

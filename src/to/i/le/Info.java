@@ -30,21 +30,15 @@ public class Info extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		ex = getIntent().getExtras();
-		
-		if(ex.getString("FROM").equals("From_StartActivity")) {
-			ButtonName = "プレイ画面へ";
-		} else {
-			ButtonName = "戻る";
-		}
+
+		//TODO: URL：　[端末のブラウザを立ち上げる] or [URLの文字列を表示]。
+		//TODO: スタートボタン
 		
 		ScrollView sc = new ScrollView(this);		
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
 		ll.setBackgroundResource(R.drawable.androidmenu);
-//		Button btn = new Button(this);
-//		btn.setText(ButtonName);
-//		btn.setOnClickListener(new click());
-//		ll.addView(btn);
+		ll.setOnClickListener(new click());
 		sc.addView(ll);		
 		setContentView(sc);
 		

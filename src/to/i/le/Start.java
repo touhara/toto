@@ -36,7 +36,7 @@ public class Start extends Activity {
     		public void run() {
     	        handler.post( new Runnable() {
     	            public void run() {
-    	            	if(sp.getString("start","1st").equals("1st")) {
+    	            	if(!sp.getString("start","1st").equals("1st")) {
     	            		//NOTE: 一回目の起動
     	            		editor.putString("start","done").commit();
     	            		Intent i = new Intent(getApplicationContext(),Info.class);
