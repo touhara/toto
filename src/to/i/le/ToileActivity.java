@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
@@ -63,10 +64,10 @@ public class ToileActivity extends Activity {
         
         ImageButton btn4 = (ImageButton)findViewById(R.id.btn4);
         btn4.setOnClickListener(click_listener);
-        
+
         // トイレットペーパーを生成する
         paper_view = (ListView)findViewById(R.id.paperView);
-        paper_list = new ArrayList<String>();
+        paper_list = new ArrayList<String>();;
         
         paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list) {            
             @Override
@@ -113,7 +114,7 @@ public class ToileActivity extends Activity {
     private void add_paper() {
     	if (!paper_list.isEmpty()){ 
     		Collections.shuffle(untiku_array);
-    		paper_list.add(0, untiku_array.get(0));
+    		paper_list.add(0, "\n\n\n"+untiku_array.get(0)+"\n\n\n");
     	}
     	for (int i=0; i<4; i++) {
     		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");

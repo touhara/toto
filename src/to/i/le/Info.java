@@ -40,13 +40,11 @@ public class Info extends Activity {
 		ScrollView sc = new ScrollView(this);		
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
-		TextView text = new TextView(this);
-		text.setText(R.string.info);
-		ll.addView(text);
-		Button btn = new Button(this);
-		btn.setText(ButtonName);
-		btn.setOnClickListener(new click());
-		ll.addView(btn);
+		ll.setBackgroundResource(R.drawable.androidmenu);
+//		Button btn = new Button(this);
+//		btn.setText(ButtonName);
+//		btn.setOnClickListener(new click());
+//		ll.addView(btn);
 		sc.addView(ll);		
 		setContentView(sc);
 		

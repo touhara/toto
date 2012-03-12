@@ -35,7 +35,7 @@
 
             <ListView
                 android:id="@+id/paperView"
-                android:layout_width="274px"
+                android:layout_width="280px"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:clickable="false"
