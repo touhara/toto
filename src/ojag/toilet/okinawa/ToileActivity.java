@@ -1,4 +1,4 @@
-package to.i.le;
+package ojag.toilet.okinawa;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -152,7 +152,6 @@ public class ToileActivity extends Activity {
         		//TODO: あたりなどのオチをランダムにしたい
     			paper_list.add(0, "あたり");
     		}else if (firstVisibleItem == 0) {
-        		//TODO: 円環リストビューにしたい
     			add_paper();
     			paper_view.invalidateViews();
     			paper_view.setSelectionFromTop(5, 0);

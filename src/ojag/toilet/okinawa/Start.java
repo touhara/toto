@@ -1,4 +1,4 @@
-package to.i.le;
+package ojag.toilet.okinawa;
 
 import java.util.Timer;
 import java.util.TimerTask;

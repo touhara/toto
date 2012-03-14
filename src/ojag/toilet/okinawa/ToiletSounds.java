@@ -1,4 +1,4 @@
-package to.i.le;
+package ojag.toilet.okinawa;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -7,11 +7,7 @@ import android.media.SoundPool;
 class ToiletSounds{
     private AudioManager _am;
     private SoundPool _sp;
-    //TODO: リファクタ
-    private int sound_id1;
-    private int sound_id2;
-    private int sound_id3;
-    private int sound_id4;
+    private int[] sound_id = new int[4];
     private ToileActivity _ta;
     
     public enum type{
@@ -36,16 +32,16 @@ class ToiletSounds{
 
          switch(type){
          case JAVAA:
-             _sp.play(sound_id1, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id[0], vol, vol, 1, 0, 1.0F);
              break;
          case PIYO:
-             _sp.play(sound_id2, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id[1], vol, vol, 1, 0, 1.0F);
              break;
          case CHARAN:
-             _sp.play(sound_id3, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id[2], vol, vol, 1, 0, 1.0F);
              break;
          case SING:
-             _sp.play(sound_id4, vol, vol, 1, 0, 1.0F);
+             _sp.play(sound_id[3], vol, vol, 1, 0, 1.0F);
              break;
          }
      }
@@ -55,22 +51,17 @@ class ToiletSounds{
         //最大5つの音を重ねて再生する
         _sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         //ファイル読み込み
-        sound_id1 = _sp.load(_ta, R.raw.tm2_river007, 0);
-        sound_id2 = _sp.load(_ta, R.raw.bin091019064957001, 0);
-        sound_id3 = _sp.load(_ta, R.raw.bin070719184706001, 0);
-        sound_id4 = _sp.load(_ta, R.raw.zatou1, 0);
+        sound_id[0] = _sp.load(_ta, R.raw.tm2_river007, 0);
+        sound_id[1] = _sp.load(_ta, R.raw.bin091019064957001, 0);
+        sound_id[2] = _sp.load(_ta, R.raw.bin070719184706001, 0);
+        sound_id[3] = _sp.load(_ta, R.raw.zatou1, 0);
      }
      
      public void unload_sound_file(){
-    	 //TODO: リファクタ
-         _sp.stop(sound_id1);
-         _sp.unload(sound_id1);
-         _sp.stop(sound_id2);
-         _sp.unload(sound_id2);
-         _sp.stop(sound_id3);
-         _sp.unload(sound_id3);
-         _sp.stop(sound_id4);
-         _sp.unload(sound_id4);
+         for (int i=0; i<4; i++) {
+             _sp.stop(sound_id[i]);
+             _sp.unload(sound_id[i]);             
+         }
          _sp.release();
      }
- }
+}

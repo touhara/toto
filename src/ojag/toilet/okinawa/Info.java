@@ -1,4 +1,4 @@
-package to.i.le;
+package ojag.toilet.okinawa;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,6 +37,5 @@ public class Info extends Activity {
         });
 		sc.addView(ll);		
 		setContentView(sc);
-		
 	}
 }

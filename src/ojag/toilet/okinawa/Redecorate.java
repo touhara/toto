@@ -1,4 +1,4 @@
-package to.i.le;
+package ojag.toilet.okinawa;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -113,6 +113,5 @@ public class Redecorate extends Activity {
 		    main.setBackgroundResource(R.drawable.bg03);		
 			break;
 		}
-
 	}
 }
