@@ -36,42 +36,37 @@ public class Start extends Activity {
     		public void run() {
     	        handler.post( new Runnable() {
     	            public void run() {
-    	            	if(!sp.getString("start","1st").equals("1st")) {
-    	            		//NOTE: 一回目の起動
+    	            	if(sp.getString("start","1st").equals("1st")) {
+    	            		// 一回目の起動
     	            		editor.putString("start","done").commit();
     	            		Intent i = new Intent(getApplicationContext(),Info.class);
     	            		i.putExtra("FROM", "From_StartActivity");
         	            	startActivityForResult(i,0);
     	            	} else {
-    	            		//NOTE: 二回目以降の起動
+    	            		// 二回目以降の起動
         	            	Intent i = new Intent(getApplicationContext(),ToileActivity.class);
         	            	startActivityForResult(i,0);
     	            	}
     	            }
     	        });
     		}
-	    }, 3000);//NOTE: ミリ秒で待機時間を指定
+	    }, 2000);// ミリ秒で待機時間を指定
     	
     	
-    	//NOTE: 表示テスト　　あとでxmlに書き直すかもです。
     	LinearLayout ll = new LinearLayout(this);
     	ll.setOrientation(LinearLayout.VERTICAL);
     	ll.setGravity(Gravity.CENTER);
     	ImageView img = new ImageView(this);
-    	img.setImageResource(R.drawable.ic_launcher);
-    	TextView text = new TextView(this);
-    	text.setText("スプラッシュ画面 (3秒間)");
-    	text.setGravity(Gravity.CENTER);
+    	img.setImageResource(R.drawable.kaihatuteamlogo);
     	ll.addView(img);
-    	ll.addView(text);
     	setContentView(ll);
     	
     }
 	
-	//NOTE: 実機の「戻る」ボタンでこの画面に戻ってきたとき、正常終了。
+	// 実機の「戻る」ボタンでこの画面に戻ってきたとき、正常終了。
 	protected void onActivityResult(int reqcode, int rescode, Intent data) {
-        setResult(RESULT_OK);
-        finish();
+	    setResult(RESULT_OK);
+	    finish();
 	}
 	
 }

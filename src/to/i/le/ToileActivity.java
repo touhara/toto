@@ -199,13 +199,15 @@ public class ToileActivity extends Activity {
     
 	protected void onActivityResult(int reqcode, int rescode, Intent data) {
         set();
-	}
+	}	
     
     // メニュー
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(Menu.NONE, 0, Menu.NONE, "使い方");
-        menu.add(Menu.NONE, 1, Menu.NONE, "模様替え");
+        menu.add(Menu.NONE, 0, Menu.NONE, "使い方")
+        .setIcon(android.R.drawable.ic_menu_help);
+        menu.add(Menu.NONE, 1, Menu.NONE, "模様替え")
+        .setIcon(android.R.drawable.ic_menu_manage);
         return super.onCreateOptionsMenu(menu);
     }
     

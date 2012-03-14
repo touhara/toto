@@ -4,27 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 public class Info extends Activity {
 	
-	String ButtonName;
 	Bundle ex;
 	
-	public class click implements android.view.View.OnClickListener {
-		public void onClick(View v) {
-			if(ex.getString("FROM").equals("From_StartActivity")) {
-				Intent i = new Intent(getApplicationContext(),ToileActivity.class);
-				startActivity(i);
-			} else {
-				finish();
-			}
-		}
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,7 +25,16 @@ public class Info extends Activity {
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
 		ll.setBackgroundResource(R.drawable.androidmenu);
-		ll.setOnClickListener(new click());
+		ll.setOnClickListener(new OnClickListener() {           
+            public void onClick(View v) {
+                if(ex.getString("FROM").equals("From_StartActivity")) {
+                    Intent i = new Intent(getApplicationContext(),ToileActivity.class);
+                    startActivity(i);
+                } else {
+                    finish();
+                }                
+            }
+        });
 		sc.addView(ll);		
 		setContentView(sc);
 		

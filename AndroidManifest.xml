@@ -10,7 +10,8 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
+        android:theme="@android:style/Theme.NoTitleBar" 
+        android:debuggable="true">
         <activity
             android:label="@string/app_name"
             android:name=".Start" >
@@ -20,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Info"></activity>
-        <activity android:name=".Redecorate"></activity>
-        <activity android:name=".ToileActivity"></activity>
+        <activity android:name=".Info" />
+        <activity android:name=".Redecorate" />
+        <activity android:name=".ToileActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
