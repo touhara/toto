@@ -34,7 +34,6 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
     	     httpResponse = httpClient.execute(request);
     	 } catch (Exception e) {
     		 //例外処理
-    	     
      	 }
     	 
     	 int status = httpResponse.getStatusLine().getStatusCode();
@@ -54,7 +53,6 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 		       }
     	    } catch (Exception e) {
     	    	//例外処理
-    	        
     	    }
     	 }
     	 return null;

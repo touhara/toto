@@ -86,6 +86,15 @@ public class ToileActivity extends Activity {
         //NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
         
+        
+        //NOTE: サーバからうんちく取得できなかった時の、とりあえずなエラー処理
+        if(untiku_array.isEmpty()) {
+            String estr[] = getResources().getStringArray(R.array.error);
+            for(int i=0; i<estr.length; i++) {
+                untiku_array.add(estr[i]);
+            }
+        }
+        
         add_paper();
         
         paper_view.setSelection(paper_list.size());
@@ -111,7 +120,7 @@ public class ToileActivity extends Activity {
    
    
     private void add_paper() {
-    	if(!paper_list.isEmpty()) { 
+    	if(!paper_list.isEmpty() && !untiku_array.isEmpty()) { 
     		Collections.shuffle(untiku_array);
     		paper_list.add(0, "\n\n\n"+untiku_array.get(0)+"\n\n\n");
     	}
