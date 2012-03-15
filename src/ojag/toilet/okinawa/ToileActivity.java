@@ -148,11 +148,9 @@ public class ToileActivity extends Activity {
     			int visibleItemCount, int totalItemCount) {
 
     	    tic = totalItemCount;
-    		if (paper_list.size() >= 1000){
-        		//TODO: あたりなどのオチをランダムにしたい
-    			paper_list.add(0, "あたり");
-    		}else if (firstVisibleItem == 0) {
-    			add_paper();
+
+    	    if(firstVisibleItem == 0) {
+    	       add_paper();
     			paper_view.invalidateViews();
     			paper_view.setSelectionFromTop(5, 0);
     		}
