@@ -10,12 +10,12 @@ import android.widget.LinearLayout;
 
 public class Redecorate extends Activity {
 
-	LinearLayout cover;
-	LinearLayout main;
-	Button[] btn = new Button[8];
-	SharedPreferences sp;
-	SharedPreferences.Editor editor;
-	String FILE_NAME = Start.FILE_NAME;
+	private LinearLayout cover;
+	private LinearLayout main;
+	private Button[] btn = new Button[8];
+	private SharedPreferences sp;
+	private SharedPreferences.Editor editor;
+	private String FILE_NAME = Start.FILE_NAME;
 
 	public class click implements OnClickListener {
 		public void onClick(View arg0) {
@@ -79,10 +79,9 @@ public class Redecorate extends Activity {
 		for(int i=0; i<8; i++) {
 			btn[i].setOnClickListener(new click());			
 		}
-		
-		
+				
 		// カバーの初期設定
-		switch(sp.getInt("COVER",0)) {
+		switch(sp.getInt("COVER",0)){
 		case 0:
 			cover.setBackgroundResource(R.drawable.cv00);
 			break;
@@ -96,10 +95,9 @@ public class Redecorate extends Activity {
 			cover.setBackgroundResource(R.drawable.cv03);			
 			break;
 		}
-
-		
+	
 		//　背景の初期設定
-		switch(sp.getInt("BACKGROUND",0)) {
+		switch(sp.getInt("BACKGROUND",0)){
 		case 0:
 		    main.setBackgroundResource(R.drawable.bg00);
 			break;

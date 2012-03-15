@@ -16,14 +16,14 @@ import android.widget.Toast;
 
 public class UntikuTask extends AsyncTask<String, Integer, String> {
 
-	ArrayList<String> _array = new ArrayList<String>();   
+   private ArrayList<String> _array = new ArrayList<String>();   
 
-	public UntikuTask(ArrayList<String> untiku_array) {
+   public UntikuTask(ArrayList<String> untiku_array) {
         _array = untiku_array;
-	}
+   }
 	
-	@Override
-	protected String doInBackground(String... params) {
+   @Override
+   protected String doInBackground(String... params) {
 		
     	 StringBuilder uri = new StringBuilder("http://untikun.heroku.com/untiku.json");
     	 HttpGet request = new HttpGet(uri.toString());
@@ -33,12 +33,13 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
     	 try {
     	     httpResponse = httpClient.execute(request);
     	 } catch (Exception e) {
-    		 
+    		 //例外処理
+    	     
      	 }
     	 
     	 int status = httpResponse.getStatusLine().getStatusCode();
     	 
-    	 if (HttpStatus.SC_OK == status) {
+    	 if(HttpStatus.SC_OK == status) {
 		    try {
 		       ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		       httpResponse.getEntity().writeTo(outputStream);
@@ -48,18 +49,14 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 		       JSONObject rootObject = new JSONObject(data);
 		       JSONArray jsonArray = rootObject.getJSONArray("untiku");
 
-		       for (int i=0; i<jsonArray.length(); i++) {
+		       for(int i=0; i<jsonArray.length(); i++) {
 		    	   _array.add(jsonArray.getString(i));
 		       }
     	    } catch (Exception e) {
-    	    	
+    	    	//例外処理
+    	        
     	    }
     	 }
     	 return null;
 	}
-	
-	@Override
-	protected void onPostExecute(String result) {
-	}
-
 }

@@ -24,7 +24,7 @@ class ToiletSounds{
     
      public void play(type type){
         //着信音の最大値音量を取得
-        int max_vol = _am.getStreamMaxVolume(AudioManager.STREAM_RING);
+         int max_vol = _am.getStreamMaxVolume(AudioManager.STREAM_RING);
         //現在の音量を取得
          int current_vol = _am.getStreamVolume(AudioManager.STREAM_RING);
         //ボリュームを計算
@@ -58,7 +58,7 @@ class ToiletSounds{
      }
      
      public void unload_sound_file(){
-         for (int i=0; i<4; i++) {
+         for(int i=0; i<4; i++) {
              _sp.stop(sound_id[i]);
              _sp.unload(sound_id[i]);             
          }

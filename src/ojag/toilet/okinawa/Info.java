@@ -10,7 +10,7 @@ import android.widget.ScrollView;
 
 public class Info extends Activity {
 	
-	Bundle ex;
+	private Bundle ex;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

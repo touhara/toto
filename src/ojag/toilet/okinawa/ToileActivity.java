@@ -23,18 +23,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class ToileActivity extends Activity {
-   private ButtonClickListener click_listener;
-   private ToiletSounds toilet_sounds;
-   private ListView paper_view;
-   private List<String> paper_list;
-   static ArrayList<String> untiku_array = new ArrayList<String>();
-   String[] str;
-   String FILE_NAME = Start.FILE_NAME;
-   SharedPreferences sp;
-   LinearLayout cover;
-   LinearLayout main;
-   int tic;
-   View hiki_view;
+    static ArrayList<String> untiku_array = new ArrayList<String>();
+    private ButtonClickListener click_listener;
+    private ToiletSounds toilet_sounds;
+    private ListView paper_view;
+    private List<String> paper_list;
+    private String FILE_NAME = Start.FILE_NAME;
+    private SharedPreferences sp;
+    private LinearLayout cover;
+    private LinearLayout main;
+    private int tic;
+    private View hiki_view;
    
     /** Called when the activity is first created. */
     @Override
@@ -73,7 +72,7 @@ public class ToileActivity extends Activity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 hiki_view = super.getView(position, convertView, parent);
-              if (position < tic - 1) {
+              if(position < tic - 1) {
                   hiki_view.setBackgroundColor(Color.WHITE);
               } else {
                   hiki_view.setBackgroundColor(Color.TRANSPARENT);
@@ -112,11 +111,11 @@ public class ToileActivity extends Activity {
    
    
     private void add_paper() {
-    	if (!paper_list.isEmpty()){ 
+    	if(!paper_list.isEmpty()) { 
     		Collections.shuffle(untiku_array);
     		paper_list.add(0, "\n\n\n"+untiku_array.get(0)+"\n\n\n");
     	}
-    	for (int i=0; i<4; i++) {
+    	for(int i=0; i<4; i++) {
     		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     	}
     }
@@ -160,7 +159,7 @@ public class ToileActivity extends Activity {
     	}
     }
     
-    void set() {
+    public void set(){
         // カバーの初期設定
         switch(sp.getInt("COVER",0)) {
         case 0:
@@ -178,7 +177,7 @@ public class ToileActivity extends Activity {
         }
 	
         // 背景の初期設定
-        switch(sp.getInt("BACKGROUND",0)) {
+        switch(sp.getInt("BACKGROUND",0)){
         case 0:
           main.setBackgroundResource(R.drawable.bg00);
           break;
