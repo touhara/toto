@@ -10,21 +10,14 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import android.os.AsyncTask;
-import android.widget.Toast;
+
 
 public class UntikuTask extends AsyncTask<String, Integer, String> {
-
-   private ArrayList<String> _array = new ArrayList<String>();   
-
-   public UntikuTask(ArrayList<String> untiku_array) {
-        _array = untiku_array;
-   }
-	
-   @Override
-   protected String doInBackground(String... params) {
-		
+    static ArrayList<String> _array = new ArrayList<String>(); 
+      
+    @Override
+    protected String doInBackground(String... params) {
     	 StringBuilder uri = new StringBuilder("http://untikun.heroku.com/untiku.json");
     	 HttpGet request = new HttpGet(uri.toString());
     	 HttpClient httpClient = new DefaultHttpClient();
@@ -33,9 +26,11 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
     	 try {
     	     httpResponse = httpClient.execute(request);
     	 } catch (Exception e) {
-    		 //例外処理
+             _array.clear();
+             _array.add("error");
+             return null;
      	 }
-    	 
+
     	 int status = httpResponse.getStatusLine().getStatusCode();
     	 
     	 if(HttpStatus.SC_OK == status) {
@@ -52,8 +47,13 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 		    	   _array.add(jsonArray.getString(i));
 		       }
     	    } catch (Exception e) {
-    	    	//例外処理
+                _array.clear();
+                _array.add("error");
+                return null;
     	    }
+    	 } else {
+    	     _array.clear();
+    	     _array.add("error");
     	 }
     	 return null;
 	}

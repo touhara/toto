@@ -5,17 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class Start extends Activity {
-
-	static final String FILE_NAME = "data";
-	private SharedPreferences sp;
-	private SharedPreferences.Editor editor;	
-	private final Handler handler = new Handler();
-	private final Runnable start = new Runnable() {
+    static final String FILE_NAME = "data";
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+    private final Handler handler = new Handler();
+    private final Runnable start = new Runnable() {
         public void run() {
             if(sp.getString("start","1st").equals("1st")) {
                 // 一回目の起動
@@ -28,15 +25,15 @@ public class Start extends Activity {
                 // 二回目以降の起動
                 Intent i = new Intent(getApplicationContext(),ToileActivity.class);
                 startActivityForResult(i,0);
-            }            
+            }
         }
     };
-    
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
        // json取得
-    	new UntikuTask(ToileActivity.untiku_array).execute();
+    	new UntikuTask().execute();
     	
     	sp = getSharedPreferences(FILE_NAME,MODE_PRIVATE);
        

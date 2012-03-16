@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class ToileActivity extends Activity {
-    static ArrayList<String> untiku_array = new ArrayList<String>();
+    static ArrayList<String> untiku_array = UntikuTask._array;
     private ButtonClickListener click_listener;
     private ToiletSounds toilet_sounds;
     private ListView paper_view;
@@ -33,6 +33,7 @@ public class ToileActivity extends Activity {
     private LinearLayout cover;
     private LinearLayout main;
     private int tic;
+    private int add_count = 0;
     private View hiki_view;
    
     /** Called when the activity is first created. */
@@ -86,12 +87,12 @@ public class ToileActivity extends Activity {
         //NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
         
-        
-        //NOTE: サーバからうんちく取得できなかった時の、とりあえずなエラー処理
-        if(untiku_array.isEmpty()) {
-            String estr[] = getResources().getStringArray(R.array.error);
-            for(int i=0; i<estr.length; i++) {
-                untiku_array.add(estr[i]);
+        //NOTE: サーバからうんちく取得できなかった時のエラー処理
+        if(untiku_array.get(0).equals("error")) {
+            untiku_array.clear();
+            String error_str[] = getResources().getStringArray(R.array.error);
+            for(int i=0; i<error_str.length; i++) {
+                untiku_array.add(error_str[i]);
             }
         }
         
@@ -118,11 +119,11 @@ public class ToileActivity extends Activity {
         super.onDestroy();
     }
    
-   
+
     private void add_paper() {
-    	if(!paper_list.isEmpty() && !untiku_array.isEmpty()) { 
-    		Collections.shuffle(untiku_array);
-    		paper_list.add(0, "\n\n\n"+untiku_array.get(0)+"\n\n\n");
+    	if(!paper_list.isEmpty() && !untiku_array.isEmpty()) {
+    		paper_list.add(0, "\n\n\n"+untiku_array.get(add_count++)+"\n\n\n");
+    		if(add_count == untiku_array.size()) add_count = 0;
     	}
     	for(int i=0; i<4; i++) {
     		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
