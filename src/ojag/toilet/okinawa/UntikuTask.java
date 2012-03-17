@@ -14,7 +14,7 @@ import android.os.AsyncTask;
 
 
 public class UntikuTask extends AsyncTask<String, Integer, String> {
-    static ArrayList<String> _array = new ArrayList<String>(); 
+    static ArrayList<String> array = new ArrayList<String>(); 
       
     @Override
     protected String doInBackground(String... params) {
@@ -26,8 +26,8 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
     	 try {
     	     httpResponse = httpClient.execute(request);
     	 } catch (Exception e) {
-    	     _array.clear();
-    	     _array.add("error");
+    	     array.clear();
+    	     array.add("error");
     	     return null;
      	 }
 
@@ -42,15 +42,15 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 		       JSONArray jsonArray = rootObject.getJSONArray("untiku");
 
 		       for(int i=0; i<jsonArray.length(); i++) {
-		    	   _array.add(jsonArray.getString(i));
+		    	   array.add(jsonArray.getString(i));
 		       }
     	    } catch (Exception e) {
-                _array.clear();
-                _array.add("error");
+                array.clear();
+                array.add("error");
     	    }
     	 } else {
-    	     _array.clear();
-    	     _array.add("error");
+    	     array.clear();
+    	     array.add("error");
     	 }
     	 return null;
 	}

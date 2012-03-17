@@ -24,7 +24,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ToileActivity extends Activity {
-    static ArrayList<String> untiku_array = UntikuTask._array;
     private ButtonClickListener click_listener;
     private ToiletSounds toilet_sounds;
     private ListView paper_view;
@@ -49,13 +48,15 @@ public class ToileActivity extends Activity {
         set();
 
         //NOTE: サーバからうんちく取得できなかった時のエラー処理
-        if(untiku_array.get(0).equals("error")) {
-            untiku_array.clear();
+        if(UntikuTask.array.get(0).equals("error")) {
+            UntikuTask.array.clear();
             String error_str[] = getResources().getStringArray(R.array.error);
             for(int i=0; i<error_str.length; i++) {
-                untiku_array.add(error_str[i]);
+                UntikuTask.array.add(error_str[i]);
             }
         }
+        
+        Collections.shuffle(UntikuTask.array);
         
     	 // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
@@ -122,8 +123,8 @@ public class ToileActivity extends Activity {
 
     private void add_paper() {
     	if(!paper_list.isEmpty()) {
-    		paper_list.add(0, "\n\n\n"+untiku_array.get(add_count++)+"\n\n\n");
-    		if(add_count == untiku_array.size()) add_count = 0;
+    		paper_list.add(0, "\n\n\n"+UntikuTask.array.get(add_count++)+"\n\n\n");
+    		if(add_count == UntikuTask.array.size()) add_count = 0;
     	}
     	for(int i=0; i<4; i++) {
     		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
