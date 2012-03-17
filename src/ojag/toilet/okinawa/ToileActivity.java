@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ToileActivity extends Activity {
     static ArrayList<String> untiku_array = UntikuTask._array;
@@ -46,7 +47,16 @@ public class ToileActivity extends Activity {
         cover = (LinearLayout)findViewById(R.id.cover);
         main = (LinearLayout)findViewById(R.id.main);
         set();
-              
+
+        //NOTE: サーバからうんちく取得できなかった時のエラー処理
+        if(untiku_array.get(0).equals("error")) {
+            untiku_array.clear();
+            String error_str[] = getResources().getStringArray(R.array.error);
+            for(int i=0; i<error_str.length; i++) {
+                untiku_array.add(error_str[i]);
+            }
+        }
+        
     	 // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
@@ -68,8 +78,9 @@ public class ToileActivity extends Activity {
         // トイレットペーパーを生成する
         paper_view = (ListView)findViewById(R.id.paperView);
         paper_list = new ArrayList<String>();
-        
-        paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list) {            
+        add_paper();
+
+        paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 hiki_view = super.getView(position, convertView, parent);
@@ -83,21 +94,10 @@ public class ToileActivity extends Activity {
         });
 
         paper_view.setOnScrollListener(new ListListener());
-        
+
         //NOTE: スクロール中の背景表示をやめる。
-        paper_view.setScrollingCacheEnabled(false);
-        
-        //NOTE: サーバからうんちく取得できなかった時のエラー処理
-        if(untiku_array.get(0).equals("error")) {
-            untiku_array.clear();
-            String error_str[] = getResources().getStringArray(R.array.error);
-            for(int i=0; i<error_str.length; i++) {
-                untiku_array.add(error_str[i]);
-            }
-        }
-        
-        add_paper();
-        
+        paper_view.setScrollingCacheEnabled(false);;
+                
         paper_view.setSelection(paper_list.size());
     }
     
@@ -121,7 +121,7 @@ public class ToileActivity extends Activity {
    
 
     private void add_paper() {
-    	if(!paper_list.isEmpty() && !untiku_array.isEmpty()) {
+    	if(!paper_list.isEmpty()) {
     		paper_list.add(0, "\n\n\n"+untiku_array.get(add_count++)+"\n\n\n");
     		if(add_count == untiku_array.size()) add_count = 0;
     	}

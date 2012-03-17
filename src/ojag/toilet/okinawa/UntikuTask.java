@@ -26,9 +26,9 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
     	 try {
     	     httpResponse = httpClient.execute(request);
     	 } catch (Exception e) {
-             _array.clear();
-             _array.add("error");
-             return null;
+    	     _array.clear();
+    	     _array.add("error");
+    	     return null;
      	 }
 
     	 int status = httpResponse.getStatusLine().getStatusCode();
@@ -37,9 +37,7 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
 		    try {
 		       ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		       httpResponse.getEntity().writeTo(outputStream);
-		        
 		       String data = outputStream.toString();
-	      
 		       JSONObject rootObject = new JSONObject(data);
 		       JSONArray jsonArray = rootObject.getJSONArray("untiku");
 
@@ -49,7 +47,6 @@ public class UntikuTask extends AsyncTask<String, Integer, String> {
     	    } catch (Exception e) {
                 _array.clear();
                 _array.add("error");
-                return null;
     	    }
     	 } else {
     	     _array.clear();
