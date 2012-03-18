@@ -28,7 +28,7 @@ public class ToileActivity extends Activity {
     private ToiletSounds toilet_sounds;
     private ListView paper_view;
     private List<String> paper_list;
-    private String FILE_NAME = Start.FILE_NAME;
+    private String FILE_NAME = UntikuTask.FILE_NAME;
     private SharedPreferences sp;
     private LinearLayout cover;
     private LinearLayout main;

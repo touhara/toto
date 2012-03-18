@@ -15,7 +15,7 @@ public class Redecorate extends Activity {
 	private Button[] btn = new Button[8];
 	private SharedPreferences sp;
 	private SharedPreferences.Editor editor;
-	private String FILE_NAME = Start.FILE_NAME;
+	private String FILE_NAME = UntikuTask.FILE_NAME;
 
 	public class click implements OnClickListener {
 		public void onClick(View arg0) {
