@@ -40,7 +40,6 @@
                 android:layout_gravity="center_horizontal"
                 android:clickable="false"
                 android:scrollbars="none"
-                android:smoothScrollbar="false"
                 android:stackFromBottom="true" android:fadingEdge="none">
 
             </ListView>

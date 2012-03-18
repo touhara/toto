@@ -9,19 +9,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ToileActivity extends Activity {
     private ButtonClickListener click_listener;
@@ -33,6 +37,7 @@ public class ToileActivity extends Activity {
     private LinearLayout cover;
     private LinearLayout main;
     private int tic;
+    private int display_height;
     private int add_count = 0;
     private View hiki_view;
    
@@ -76,6 +81,11 @@ public class ToileActivity extends Activity {
         ImageButton btn4 = (ImageButton)findViewById(R.id.btn4);
         btn4.setOnClickListener(click_listener);
 
+        // ディスプレイのサイズ取得（紙を切るアニメーション用）
+        WindowManager wm = (WindowManager)getSystemService(WINDOW_SERVICE);
+        Display disp = wm.getDefaultDisplay();
+        display_height = disp.getHeight();
+        
         // トイレットペーパーを生成する
         paper_view = (ListView)findViewById(R.id.paperView);
         paper_list = new ArrayList<String>();
@@ -85,11 +95,34 @@ public class ToileActivity extends Activity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 hiki_view = super.getView(position, convertView, parent);
+                  
               if(position < tic - 1) {
                   hiki_view.setBackgroundColor(Color.WHITE);
               } else {
                   hiki_view.setBackgroundColor(Color.TRANSPARENT);
                 }
+              
+              hiki_view.setOnLongClickListener(new OnLongClickListener() {
+                  
+                public boolean onLongClick(View v) {
+                    TranslateAnimation translate = new TranslateAnimation(0, 0, 10, display_height);
+                    translate.setDuration(1000);
+                    translate.setAnimationListener(new AnimationListener() {
+                        public void onAnimationStart(Animation animation) {
+                        }
+                        public void onAnimationRepeat(Animation animation) {
+                        }
+                        public void onAnimationEnd(Animation animation) {
+                            paper_view.setSelection(paper_list.size());
+                        }
+                    });
+                    
+                    paper_view.setAnimationCacheEnabled(false);
+                    paper_view.startAnimation(translate);                    
+                    return false;
+                    }
+                  });
+
                 return hiki_view;
             }   
         });
@@ -97,10 +130,14 @@ public class ToileActivity extends Activity {
         paper_view.setOnScrollListener(new ListListener());
 
         //NOTE: スクロール中の背景表示をやめる。
-        paper_view.setScrollingCacheEnabled(false);;
-                
+        paper_view.setScrollingCacheEnabled(false);
+
+        
         paper_view.setSelection(paper_list.size());
+
+        
     }
+
     
     @Override
     protected void onResume() {

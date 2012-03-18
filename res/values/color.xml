@@ -3,4 +3,5 @@
 	<color name="white">#FFFFFF</color>
 	<color name="black">#000000</color>
 	<color name="green">#94cb08</color>
+	<color name="transparent">@android:color/transparent</color>
 </resources>
