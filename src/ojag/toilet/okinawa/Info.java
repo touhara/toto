@@ -11,7 +11,8 @@ import android.widget.ScrollView;
 public class Info extends Activity {
 	
 	private Bundle ex;
-	
+	//git test 
+	//ちょっと、gitの機能テスト
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
