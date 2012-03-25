@@ -73,75 +73,75 @@
             android:id="@+id/wal_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15px"
+            android:layout_marginTop="5px"
             android:layout_weight="1"
             android:text="背景"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Button
-            android:id="@+id/Button00"
+        <ImageView
+            android:id="@+id/ImageView00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn10" />
 
-        <Button
-            android:id="@+id/Button01"
+        <ImageView
+            android:id="@+id/ImageView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn11" />
 
-        <Button
-            android:id="@+id/Button02"
+        <ImageView
+            android:id="@+id/ImageView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn12" />
 
-        <Button
-            android:id="@+id/Button03"
+        <ImageView
+            android:id="@+id/ImageView03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn13" />
 
         <TextView
             android:id="@+id/cov_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="5px"
             android:layout_weight="1"
             android:text="カバー"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Button
-            android:id="@+id/Button04"
+        <ImageView
+            android:id="@+id/ImageView04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn00" />
 
-        <Button
-            android:id="@+id/Button05"
+        <ImageView
+            android:id="@+id/ImageView05"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn01" />
 
-        <Button
-            android:id="@+id/Button06"
+        <ImageView
+            android:id="@+id/ImageView06"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn02" />
 
-        <Button
-            android:id="@+id/Button07"
+        <ImageView
+            android:id="@+id/ImageView07"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:src="@drawable/btn03" />
 
     </LinearLayout>
 

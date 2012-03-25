@@ -2,40 +2,52 @@ package ojag.toilet.okinawa;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Info extends Activity {
-	
-	private Bundle ex;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		ex = getIntent().getExtras();
 
-		//TODO: URL：　[端末のブラウザを立ち上げる] or [URLの文字列を表示]。
-		//TODO: スタートボタン
-		
-		ScrollView sc = new ScrollView(this);		
-		LinearLayout ll = new LinearLayout(this);
-		ll.setOrientation(LinearLayout.VERTICAL);
-		ll.setBackgroundResource(R.drawable.androidmenu);
-		ll.setOnClickListener(new OnClickListener() {           
-            public void onClick(View v) {
-                if(ex.getString("FROM").equals("From_StartActivity")) {
-                    Intent i = new Intent(getApplicationContext(),ToileActivity.class);
-                    startActivity(i);
-                } else {
-                    finish();
-                }                
+    private Bundle ex = null;
+    
+    public class click implements OnClickListener {
+
+        public void onClick(View v) {
+            switch(v.getId()) {
+            case R.id.img_url:
+                Intent i = new Intent();
+                i.setAction(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://untikun.heroku.com/"));
+                startActivity(i);
+                break;
+                
+            case R.id.img_start:
+                Intent i2 = new Intent(getApplicationContext(),ToileActivity.class);
+                startActivity(i2);
+//                finish();
+                break;
             }
-        });
-		sc.addView(ll);		
-		setContentView(sc);
-	}
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.info);
+        ex = getIntent().getExtras();
+
+        ImageView img_url = (ImageView) findViewById(R.id.img_url);
+        img_url.setOnClickListener(new click());
+        
+        ImageView img_start = (ImageView) findViewById(R.id.img_start);
+        img_start.setOnClickListener(new click());
+    }
 }
+/*
+if(ex.getString("FROM").equals("From_StartActivity")) { Intent i = new
+Intent(getApplicationContext(), ToileActivity.class);
+startActivity(i);
+*/

@@ -40,105 +40,106 @@ public class ToileActivity extends Activity {
     private int display_height;
     private int add_count = 0;
     private View hiki_view;
-   
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        sp = getSharedPreferences(FILE_NAME,MODE_PRIVATE);
-        cover = (LinearLayout)findViewById(R.id.cover);
-        main = (LinearLayout)findViewById(R.id.main);
+        sp = getSharedPreferences(FILE_NAME, MODE_PRIVATE);
+        cover = (LinearLayout) findViewById(R.id.cover);
+        main = (LinearLayout) findViewById(R.id.main);
         set();
 
-        //NOTE: サーバからうんちく取得できなかった時のエラー処理
-        if(UntikuTask.array.get(0).equals("error")) {
+        // NOTE: サーバからうんちく取得できなかった時のエラー処理
+        if (UntikuTask.array.get(0).equals("error")) {
             UntikuTask.array.clear();
             String error_str[] = getResources().getStringArray(R.array.error);
-            for(int i=0; i<error_str.length; i++) {
+            for (int i = 0; i < error_str.length; i++) {
                 UntikuTask.array.add(error_str[i]);
             }
         }
-        
+
         Collections.shuffle(UntikuTask.array);
-        
-    	 // 音声ファイルを読み込む
+
+        // 音声ファイルを読み込む
         toilet_sounds = new ToiletSounds(ToileActivity.this);
         toilet_sounds.load_sound_file();
-        
+
         click_listener = new ButtonClickListener();
-        
-        ImageButton btn1 = (ImageButton)findViewById(R.id.btn1);
+
+        ImageButton btn1 = (ImageButton) findViewById(R.id.btn1);
         btn1.setOnClickListener(click_listener);
-        
-        ImageButton btn2 = (ImageButton)findViewById(R.id.btn2);
+
+        ImageButton btn2 = (ImageButton) findViewById(R.id.btn2);
         btn2.setOnClickListener(click_listener);
-        
-        ImageButton btn3 = (ImageButton)findViewById(R.id.btn3);
+
+        ImageButton btn3 = (ImageButton) findViewById(R.id.btn3);
         btn3.setOnClickListener(click_listener);
-        
-        ImageButton btn4 = (ImageButton)findViewById(R.id.btn4);
+
+        ImageButton btn4 = (ImageButton) findViewById(R.id.btn4);
         btn4.setOnClickListener(click_listener);
 
         // ディスプレイのサイズ取得（紙を切るアニメーション用）
-        WindowManager wm = (WindowManager)getSystemService(WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         Display disp = wm.getDefaultDisplay();
         display_height = disp.getHeight();
-        
+
         // トイレットペーパーを生成する
-        paper_view = (ListView)findViewById(R.id.paperView);
+        paper_view = (ListView) findViewById(R.id.paperView);
         paper_list = new ArrayList<String>();
         add_paper();
 
-        paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list, R.id.row_textview1, paper_list) {
+        paper_view.setAdapter(new ArrayAdapter<String>(this, R.layout.list,
+                R.id.row_textview1, paper_list) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 hiki_view = super.getView(position, convertView, parent);
-                  
-              if(position < tic - 1) {
-                  hiki_view.setBackgroundColor(Color.WHITE);
-              } else {
-                  hiki_view.setBackgroundColor(Color.TRANSPARENT);
+
+                if (position < tic - 1) {
+                    hiki_view.setBackgroundColor(Color.WHITE);
+                } else {
+                    hiki_view.setBackgroundColor(Color.TRANSPARENT);
                 }
-              
-              hiki_view.setOnLongClickListener(new OnLongClickListener() {
-                  
-                public boolean onLongClick(View v) {
-                    TranslateAnimation translate = new TranslateAnimation(0, 0, 10, display_height);
-                    translate.setDuration(1000);
-                    translate.setAnimationListener(new AnimationListener() {
-                        public void onAnimationStart(Animation animation) {
-                        }
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                        public void onAnimationEnd(Animation animation) {
-                            paper_view.setSelection(paper_list.size());
-                        }
-                    });
-                    
-                    paper_view.setAnimationCacheEnabled(false);
-                    paper_view.startAnimation(translate);                    
-                    return false;
+
+                hiki_view.setOnLongClickListener(new OnLongClickListener() {
+
+                    public boolean onLongClick(View v) {
+                        TranslateAnimation translate = new TranslateAnimation(
+                                0, 0, 10, display_height);
+                        translate.setDuration(1000);
+                        translate.setAnimationListener(new AnimationListener() {
+                            public void onAnimationStart(Animation animation) {
+                            }
+
+                            public void onAnimationRepeat(Animation animation) {
+                            }
+
+                            public void onAnimationEnd(Animation animation) {
+                                paper_view.setSelection(paper_list.size());
+                            }
+                        });
+
+                        paper_view.setAnimationCacheEnabled(false);
+                        paper_view.startAnimation(translate);
+                        return false;
                     }
-                  });
+                });
 
                 return hiki_view;
-            }   
+            }
         });
 
         paper_view.setOnScrollListener(new ListListener());
 
-        //NOTE: スクロール中の背景表示をやめる。
+        // NOTE: スクロール中の背景表示をやめる。
         paper_view.setScrollingCacheEnabled(false);
-
         
         paper_view.setSelection(paper_list.size());
 
-        
     }
 
-    
     @Override
     protected void onResume() {
         toilet_sounds.load_sound_file();
@@ -150,29 +151,30 @@ public class ToileActivity extends Activity {
         toilet_sounds.unload_sound_file();
         super.onPause();
     }
-    
+
     @Override
     protected void onDestroy() {
         toilet_sounds.unload_sound_file();
         super.onDestroy();
     }
-   
 
     private void add_paper() {
-    	if(!paper_list.isEmpty()) {
-    		paper_list.add(0, "\n\n\n"+UntikuTask.array.get(add_count++)+"\n\n\n");
-    		if(add_count == UntikuTask.array.size()) add_count = 0;
-    	}
-    	for(int i=0; i<4; i++) {
-    		paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    	}
+        if (!paper_list.isEmpty()) {
+            paper_list.add(0, "\n\n\n" + UntikuTask.array.get(add_count++)
+                    + "\n\n\n");
+            if (add_count == UntikuTask.array.size())
+                add_count = 0;
+        }
+        for (int i = 0; i < 4; i++) {
+            paper_list.add(0, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
     }
-    
-    // ボタン押したときの処理を記述
-    class ButtonClickListener implements OnClickListener{
 
-        public void onClick(View v){
-            switch(v.getId()){
+    // ボタン押したときの処理を記述
+    class ButtonClickListener implements OnClickListener {
+
+        public void onClick(View v) {
+            switch (v.getId()) {
             case R.id.btn1:
                 toilet_sounds.play(ToiletSounds.type.JAVAA);
                 break;
@@ -188,85 +190,85 @@ public class ToileActivity extends Activity {
             }
         }
     }
-    
-    class ListListener implements OnScrollListener{
-    	
-    	public void onScroll(AbsListView view, int firstVisibleItem,
-    			int visibleItemCount, int totalItemCount) {
 
-    	    tic = totalItemCount;
+    class ListListener implements OnScrollListener {
 
-    	    if(firstVisibleItem == 0) {
-    	       add_paper();
-    			paper_view.invalidateViews();
-    			paper_view.setSelectionFromTop(5, 0);
-    		}
-    	}
+        public void onScroll(AbsListView view, int firstVisibleItem,
+                int visibleItemCount, int totalItemCount) {
 
-    	public void onScrollStateChanged(AbsListView view, int scrollState) {
-    	}
+            tic = totalItemCount;
+
+            if (firstVisibleItem == 0) {
+                add_paper();
+                paper_view.invalidateViews();
+                paper_view.setSelectionFromTop(5, 0);
+            }
+        }
+
+        public void onScrollStateChanged(AbsListView view, int scrollState) {
+        }
     }
-    
-    public void set(){
+
+    public void set() {
         // カバーの初期設定
-        switch(sp.getInt("COVER",0)) {
+        switch (sp.getInt("COVER", 0)) {
         case 0:
-        	cover.setBackgroundResource(R.drawable.cv00);
-        	break;
+            cover.setBackgroundResource(R.drawable.cv00);
+            break;
         case 1:
-			cover.setBackgroundResource(R.drawable.cv01);
-			break;
+            cover.setBackgroundResource(R.drawable.cv01);
+            break;
         case 2:
-			cover.setBackgroundResource(R.drawable.cv02);			
-			break;
+            cover.setBackgroundResource(R.drawable.cv02);
+            break;
         case 3:
-			cover.setBackgroundResource(R.drawable.cv03);			
-			break;
+            cover.setBackgroundResource(R.drawable.cv03);
+            break;
         }
-	
+
         // 背景の初期設定
-        switch(sp.getInt("BACKGROUND",0)){
+        switch (sp.getInt("BACKGROUND", 0)) {
         case 0:
-          main.setBackgroundResource(R.drawable.bg00);
-          break;
+            main.setBackgroundResource(R.drawable.bg00);
+            break;
         case 1:
-          main.setBackgroundResource(R.drawable.bg01);
-          break;
+            main.setBackgroundResource(R.drawable.bg01);
+            break;
         case 2:
-          main.setBackgroundResource(R.drawable.bg02);
-          break;
+            main.setBackgroundResource(R.drawable.bg02);
+            break;
         case 3:
-          main.setBackgroundResource(R.drawable.bg03);
-          break;
+            main.setBackgroundResource(R.drawable.bg03);
+            break;
         }
     }
-    
-	protected void onActivityResult(int reqcode, int rescode, Intent data) {
+
+    protected void onActivityResult(int reqcode, int rescode, Intent data) {
         set();
-	}	
-    
+    }
+
     // メニュー
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(Menu.NONE, 0, Menu.NONE, "使い方")
-        .setIcon(android.R.drawable.ic_menu_help);
-        menu.add(Menu.NONE, 1, Menu.NONE, "模様替え")
-        .setIcon(android.R.drawable.ic_menu_manage);
+        menu.add(Menu.NONE, 0, Menu.NONE, "使い方").setIcon(
+                android.R.drawable.ic_menu_help);
+        menu.add(Menu.NONE, 1, Menu.NONE, "模様替え").setIcon(
+                android.R.drawable.ic_menu_manage);
         return super.onCreateOptionsMenu(menu);
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case 0:
-        	Intent Info = new Intent(getApplicationContext(),Info.class);
-        	Info.putExtra("FROM", "From_ToileActivity");
-        	startActivity(Info);
-        	break;
+            Intent Info = new Intent(getApplicationContext(), Info.class);
+            Info.putExtra("FROM", "From_ToileActivity");
+            startActivity(Info);
+            break;
         case 1:
-        	Intent Rede = new Intent(getApplicationContext(),Redecorate.class);
-        	startActivityForResult(Rede,0);
-        	break;
+            Intent Rede = new Intent(getApplicationContext(), Redecorate.class);
+            startActivityForResult(Rede, 1);
+            break;
         }
         return true;
     }
