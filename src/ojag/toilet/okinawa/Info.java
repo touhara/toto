@@ -11,23 +11,27 @@ import android.widget.Toast;
 
 public class Info extends Activity {
 
-    private Bundle ex = null;
-    
+    private Bundle ex;
+
     public class click implements OnClickListener {
 
         public void onClick(View v) {
-            switch(v.getId()) {
+            switch (v.getId()) {
             case R.id.img_url:
                 Intent i = new Intent();
                 i.setAction(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("http://untikun.heroku.com/"));
-                startActivity(i);
+                startActivityForResult(i, 0);
                 break;
-                
+
             case R.id.img_start:
-                Intent i2 = new Intent(getApplicationContext(),ToileActivity.class);
-                startActivity(i2);
-//                finish();
+                if (ex.getString("FROM").equals("From_StartActivity")) {
+                    Intent i2 = new Intent(getApplicationContext(),
+                            ToileActivity.class);
+                    startActivity(i2);
+                } else {
+                    finish();
+                }
                 break;
             }
         }
@@ -41,13 +45,8 @@ public class Info extends Activity {
 
         ImageView img_url = (ImageView) findViewById(R.id.img_url);
         img_url.setOnClickListener(new click());
-        
+
         ImageView img_start = (ImageView) findViewById(R.id.img_start);
         img_start.setOnClickListener(new click());
     }
 }
-/*
-if(ex.getString("FROM").equals("From_StartActivity")) { Intent i = new
-Intent(getApplicationContext(), ToileActivity.class);
-startActivity(i);
-*/

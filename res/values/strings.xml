@@ -2,11 +2,9 @@
 <resources>
     <string name="app_name">トイレの紙様</string>
 
-	<string name="redecorate">
-	\n\n\n
-    模様替え画面です。
-    </string>
-    
+	<string name="redecorate_text">模様替え画面です。\n\n右側のメニューから、背景とカバーが選択できます。</string>
+	<string name="redecorate_btn">決定</string>
+	
 	<string-array name="error">
 	    <item>「ネットワークに何かエラー？\n
 	     	   今表示されているのは、非常用うんちくです」</item>

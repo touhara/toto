@@ -40,13 +40,21 @@
                 android:layout_height="fill_parent"
                 android:layout_gravity="center_horizontal"
                 android:background="@color/white"
+                android:gravity="center"
                 android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/redecorate" android:textColor="@color/black"/>
+                    android:text="@string/redecorate_text"
+                    android:textColor="@color/black" android:layout_marginBottom="30dp" android:layout_gravity="center" android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/redecorate_btn" />
 
             </LinearLayout>
 
@@ -73,76 +81,97 @@
             android:id="@+id/wal_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="7px"
             android:layout_weight="1"
             android:text="背景"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <ImageView
-            android:id="@+id/ImageView00"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn00"
+            android:layout_width="120px"
+            android:layout_height="80px"
             android:layout_weight="1"
-            android:src="@drawable/btn10" />
+            android:background="@drawable/btn10"
+            android:orientation="horizontal" >
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ImageView01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn01"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_marginTop="3px"
             android:layout_weight="1"
-            android:src="@drawable/btn11" />
+            android:background="@drawable/btn11"
+            android:orientation="horizontal" >
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ImageView02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn02"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_marginTop="3px"
             android:layout_weight="1"
-            android:src="@drawable/btn12" />
+            android:background="@drawable/btn12"
+            android:orientation="horizontal" >
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ImageView03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn03"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_marginTop="3px"
             android:layout_weight="1"
-            android:src="@drawable/btn13" />
+            android:background="@drawable/btn13"
+            android:orientation="horizontal" >
+        </LinearLayout>
 
         <TextView
             android:id="@+id/cov_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="7px"
             android:layout_weight="1"
             android:text="カバー"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <ImageView
-            android:id="@+id/ImageView04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn04"
+            android:layout_width="120px"
+            android:layout_height="80px"
             android:layout_weight="1"
-            android:src="@drawable/btn00" />
+            android:background="@drawable/btn00"
+            android:orientation="vertical" >
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ImageView05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn05"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_marginTop="3px"
             android:layout_weight="1"
-            android:src="@drawable/btn01" />
+            android:background="@drawable/btn01"
+            android:orientation="vertical" >
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ImageView06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn06"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_marginTop="3px"
             android:layout_weight="1"
-            android:src="@drawable/btn02" />
+            android:background="@drawable/btn02"
+            android:orientation="vertical" >
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ImageView07"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llbtn07"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_marginTop="3px"
             android:layout_weight="1"
-            android:src="@drawable/btn03" />
-
+            android:background="@drawable/btn03"
+            android:orientation="vertical" >
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
