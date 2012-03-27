@@ -6,8 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 public class Info extends Activity {
 
@@ -17,14 +16,14 @@ public class Info extends Activity {
 
         public void onClick(View v) {
             switch (v.getId()) {
-            case R.id.img_url:
+            case R.id.l02:
                 Intent i = new Intent();
                 i.setAction(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("http://untikun.heroku.com/"));
                 startActivityForResult(i, 0);
                 break;
 
-            case R.id.img_start:
+            case R.id.l03:
                 if (ex.getString("FROM").equals("From_StartActivity")) {
                     Intent i2 = new Intent(getApplicationContext(),
                             ToileActivity.class);
@@ -43,10 +42,10 @@ public class Info extends Activity {
         setContentView(R.layout.info);
         ex = getIntent().getExtras();
 
-        ImageView img_url = (ImageView) findViewById(R.id.img_url);
-        img_url.setOnClickListener(new click());
+        LinearLayout l02 = (LinearLayout)findViewById(R.id.l02);
+        l02.setOnClickListener(new click());
 
-        ImageView img_start = (ImageView) findViewById(R.id.img_start);
-        img_start.setOnClickListener(new click());
+        LinearLayout l03 = (LinearLayout)findViewById(R.id.l03);
+        l03.setOnClickListener(new click());
     }
 }
