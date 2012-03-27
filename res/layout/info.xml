@@ -7,8 +7,10 @@
     <LinearLayout
         android:id="@+id/l01"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" android:background="@drawable/info_top">
+        android:layout_height="590px"
+        android:background="@drawable/info_top"
+        android:orientation="vertical" >
+
     </LinearLayout>
 
     <LinearLayout
@@ -23,8 +25,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/info_und"
-        android:orientation="vertical" >
-
+        android:orientation="vertical">
     </LinearLayout>
 
 </LinearLayout>
